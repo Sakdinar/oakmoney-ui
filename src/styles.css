@@ -15,17 +15,18 @@ label {
     margin: 0 auto;
   }
 }
-
+/**
+* Apenas para colunas de tabelas com valores numericos
+*/
 .col-valor {
   width: 120px;
   text-align: right;
 }
-.col-data {
-  width: 120px;
-  text-align: center;
-}
-
-.col-action {
+/**
+* Apenas para colunas de tabelas com status
+* e para colunas de tabelas botoes de acao
+*/
+.col-action, .col-status {
   width: 90px;
   text-align: center;
 }
