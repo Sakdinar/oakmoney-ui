@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from "@angular/forms/forms";
 
 @Component({
   selector: 'app-lancamentos-pesquisa',
@@ -24,4 +25,8 @@ export class LancamentosPesquisaComponent {
       dataPagamento: null, valor: 180, pessoa: 'Academia Top' }
   ];
 
+  pesquisar(form: NgForm) {
+    console.log(form);
+    console.log(form.value.descricao);
+  }
 }
