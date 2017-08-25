@@ -35,4 +35,9 @@ label {
   width: 90px;
   text-align: center;
 }
-
+/**
+* Alterando o estilo do filtro do componente dropdown para que ele ocupe 100% do espaço
+*/
+.ui-dropdown-filter-container {
+  width: 100%;
+}
