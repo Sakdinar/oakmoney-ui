@@ -20,6 +20,7 @@ import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.co
 import { LancamentosCadastroComponent } from './lancamentos-cadastro/lancamentos-cadastro.component';
 import { CURRENCY_MASK_CONFIG } from 'ng2-currency-mask/src/currency-mask.config';
 import { CustomCurrencyMaskConfig } from './commons/custom-currency-mask-config.const';
+import { PessoasCadastroComponent } from './pessoas-cadastro/pessoas-cadastro.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { CustomCurrencyMaskConfig } from './commons/custom-currency-mask-config.
     NavbarComponent,
     PessoasPesquisaComponent,
     LancamentosCadastroComponent,
+    PessoasCadastroComponent
   ],
   imports: [
     BrowserAnimationsModule,
