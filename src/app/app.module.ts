@@ -11,12 +11,15 @@ import { CalendarModule } from 'primeng/components/calendar/calendar';
 import { SelectButtonModule } from 'primeng/components/selectbutton/selectbutton';
 import { DropdownModule } from 'primeng/components/dropdown/dropdown';
 
+import { CurrencyMaskModule } from 'ng2-currency-mask';
 
 import { AppComponent } from './app.component';
 import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
 import { LancamentosCadastroComponent } from './lancamentos-cadastro/lancamentos-cadastro.component';
+import { CURRENCY_MASK_CONFIG } from 'ng2-currency-mask/src/currency-mask.config';
+import { CustomCurrencyMaskConfig } from './commons/custom-currency-mask-config.const';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,7 @@ import { LancamentosCadastroComponent } from './lancamentos-cadastro/lancamentos
     LancamentosPesquisaComponent,
     NavbarComponent,
     PessoasPesquisaComponent,
-    LancamentosCadastroComponent
+    LancamentosCadastroComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -37,9 +40,12 @@ import { LancamentosCadastroComponent } from './lancamentos-cadastro/lancamentos
     InputTextareaModule,
     CalendarModule,
     SelectButtonModule,
-    DropdownModule
+    DropdownModule,
+    CurrencyMaskModule
   ],
-  providers: [],
+  providers: [
+    { provide: CURRENCY_MASK_CONFIG, useValue: CustomCurrencyMaskConfig }
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
