@@ -20,8 +20,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
 import { LancamentosCadastroComponent } from './lancamentos-cadastro/lancamentos-cadastro.component';
 import { CURRENCY_MASK_CONFIG } from 'ng2-currency-mask/src/currency-mask.config';
-import { CustomCurrencyMaskConfig } from './commons/custom-currency-mask-config.const';
 import { PessoasCadastroComponent } from './pessoas-cadastro/pessoas-cadastro.component';
+
+import { CustomCurrencyMaskConfig } from './commons/custom-currency-mask-config.const';
+import { MessageComponent } from './commons/message.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { PessoasCadastroComponent } from './pessoas-cadastro/pessoas-cadastro.co
     NavbarComponent,
     PessoasPesquisaComponent,
     LancamentosCadastroComponent,
-    PessoasCadastroComponent
+    PessoasCadastroComponent,
+    MessageComponent
   ],
   imports: [
     BrowserAnimationsModule,
