@@ -7,8 +7,6 @@ import { LancamentosGridComponent } from './lancamentos-grid/lancamentos-grid.co
 import { LancamentosCadastroComponent } from './lancamentos-cadastro/lancamentos-cadastro.component';
 import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
 
-import { PanelModule } from 'primeng/components/panel/panel';
-import { DragDropModule } from 'primeng/components/dragdrop/dragdrop';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { InputMaskModule } from 'primeng/components/inputmask/inputmask';
 import { DropdownModule } from 'primeng/components/dropdown/dropdown';
@@ -35,8 +33,6 @@ import { InputTextModule } from 'primeng/components/inputtext/inputtext';
     DropdownModule,
     InputMaskModule,
     CurrencyMaskModule,
-    DragDropModule,
-    PanelModule
   ],
   declarations: [
     LancamentosPesquisaComponent,
