@@ -11,44 +11,31 @@ import { CalendarModule } from 'primeng/components/calendar/calendar';
 import { SelectButtonModule } from 'primeng/components/selectbutton/selectbutton';
 import { DropdownModule } from 'primeng/components/dropdown/dropdown';
 import { InputMaskModule } from 'primeng/components/inputmask/inputmask';
+import { DragDropModule } from 'primeng/components/dragdrop/dragdrop';
+import { PanelModule } from 'primeng/components/panel/panel';
+
+import { OakCoreModule } from './oak-core/oak-core.module';
+import { LancamentosModule } from './lancamentos/lancamentos.module';
+import { PessoasModule } from './pessoas/pessoas.module';
 
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 
 import { AppComponent } from './app.component';
-import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
-import { LancamentosCadastroComponent } from './lancamentos-cadastro/lancamentos-cadastro.component';
 import { CURRENCY_MASK_CONFIG } from 'ng2-currency-mask/src/currency-mask.config';
-import { PessoasCadastroComponent } from './pessoas-cadastro/pessoas-cadastro.component';
 
-import { CustomCurrencyMaskConfig } from './commons/custom-currency-mask-config.const';
-import { MessageComponent } from './commons/message.component';
+import { CustomCurrencyMaskConfig } from './const/custom-currency-mask-config.const';
+
 
 @NgModule({
   declarations: [
-    AppComponent,
-    LancamentosPesquisaComponent,
-    NavbarComponent,
-    PessoasPesquisaComponent,
-    LancamentosCadastroComponent,
-    PessoasCadastroComponent,
-    MessageComponent
+    AppComponent
   ],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
-    FormsModule,
-    InputTextModule,
-    ButtonModule,
-    DataTableModule,
-    TooltipModule,
-    InputTextareaModule,
-    CalendarModule,
-    SelectButtonModule,
-    DropdownModule,
-    InputMaskModule,
-    CurrencyMaskModule
+    OakCoreModule,
+    LancamentosModule,
+    PessoasModule
   ],
   providers: [
     { provide: CURRENCY_MASK_CONFIG, useValue: CustomCurrencyMaskConfig }

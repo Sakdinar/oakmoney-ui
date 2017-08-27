@@ -1,0 +1,24 @@
+<div class="ui-g-12" >
+  <p-dataTable [value]="pessoas" >
+    <p-header>Resutados para Pessoas</p-header>
+    <p-column field="nome" header="Nome" ></p-column>
+    <p-column field="endereco.cidade" header="Cidade" ></p-column>
+    <p-column field="endereco.estado" header="Estado" ></p-column>
+    <p-column header="Status" styleClass="col-status" >
+      <ng-template pTemplate let-p="rowData" pTemplate="body" >
+        <div [hidden]="!p.ativo" >
+          <i class="fa fa-check" aria-hidden="true" [style.color]="'green'" ></i>
+        </div>
+        <div [hidden]="p.ativo" >
+          <i class="fa fa-times" aria-hidden="true" [style.color]="'red'" ></i>
+        </div>
+      </ng-template>
+    </p-column>
+    <p-column styleClass="col-action" >
+      <ng-template pTemplate="body" >
+        <a pButton icon="fa-pencil" pTooltip="Editar" tooltipPosition="top" ></a>
+        <button type="button" pButton icon="fa-trash" pTooltip="Remover" tooltipPosition="top" ></button>
+      </ng-template>
+    </p-column>
+  </p-dataTable>
+</div>

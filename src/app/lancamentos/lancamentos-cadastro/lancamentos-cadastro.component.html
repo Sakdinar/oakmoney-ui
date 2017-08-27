@@ -51,7 +51,8 @@
       </div>
 
       <div class="ui-g-12" >
-        <button type="button" label="Salvar" title="{{ !lancamentoForm.valid ? 'Preencha todos os campos obrigatórios' : 'Salvar' }}"
+        <button type="button" label="Salvar"
+          pTooltip="{{ !lancamentoForm.valid ? 'Preencha todos os campos obrigatórios' : 'Salvar' }}" tooltipPosition="bottom"
           [disabled]="!lancamentoForm.valid" pButton ></button>
         <button type="button" pButton label="Limpar" class="ui-button-info" ></button>
         <a href="javascript:;">Voltar para a pesquisa</a>

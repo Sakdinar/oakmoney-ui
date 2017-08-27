@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from "@angular/forms/forms";
+import { NgForm } from '@angular/forms/forms';
 
 @Component({
   selector: 'app-lancamentos-pesquisa',
-  templateUrl: './lancamentos-pesquisa.component.html',
-  styleUrls: ['./lancamentos-pesquisa.component.css']
+  templateUrl: './lancamentos-pesquisa.component.html'
 })
 export class LancamentosPesquisaComponent {
 

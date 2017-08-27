@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-lancamentos-cadastro',
-  templateUrl: './lancamentos-cadastro.component.html',
-  styleUrls: ['./lancamentos-cadastro.component.css']
+  templateUrl: './lancamentos-cadastro.component.html'
 })
 export class LancamentosCadastroComponent implements OnInit {
 
