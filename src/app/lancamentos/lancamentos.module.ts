@@ -6,6 +6,7 @@ import { OakCommonsModule } from './../oak-commons/oak-commons.module';
 import { LancamentosGridComponent } from './lancamentos-grid/lancamentos-grid.component';
 import { LancamentosCadastroComponent } from './lancamentos-cadastro/lancamentos-cadastro.component';
 import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
+import { LancamentosService } from './lancamentos.service';
 
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { InputMaskModule } from 'primeng/components/inputmask/inputmask';
@@ -42,6 +43,9 @@ import { InputTextModule } from 'primeng/components/inputtext/inputtext';
   exports: [
     LancamentosPesquisaComponent,
     LancamentosCadastroComponent,
+  ],
+  providers: [
+    LancamentosService
   ]
 })
 export class LancamentosModule { }

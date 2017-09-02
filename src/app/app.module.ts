@@ -2,6 +2,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
+
 import { InputTextModule } from 'primeng/components/inputtext/inputtext';
 import { ButtonModule } from 'primeng/components/button/button';
 import { DataTableModule } from 'primeng/components/datatable/datatable';
@@ -17,8 +19,7 @@ import { PanelModule } from 'primeng/components/panel/panel';
 import { OakCoreModule } from './oak-core/oak-core.module';
 import { LancamentosModule } from './lancamentos/lancamentos.module';
 import { PessoasModule } from './pessoas/pessoas.module';
-
-import { CurrencyMaskModule } from 'ng2-currency-mask';
+import { SegurancaModule } from './seguranca/seguranca.module';
 
 import { AppComponent } from './app.component';
 import { CURRENCY_MASK_CONFIG } from 'ng2-currency-mask/src/currency-mask.config';
@@ -33,9 +34,11 @@ import { CustomCurrencyMaskConfig } from './const/custom-currency-mask-config.co
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
+    HttpModule,
     OakCoreModule,
     LancamentosModule,
-    PessoasModule
+    PessoasModule,
+    SegurancaModule
   ],
   providers: [
     { provide: CURRENCY_MASK_CONFIG, useValue: CustomCurrencyMaskConfig }
