@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AuthService } from './../seguranca/auth.service';
+import { JwtHelper } from 'angular2-jwt';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { AuthService } from './../seguranca/auth.service';
     NavbarComponent
   ],
   providers: [
-    AuthService
+    AuthService,
+    JwtHelper
   ]
 })
 export class OakCoreModule { }

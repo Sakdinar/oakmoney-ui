@@ -14,6 +14,10 @@ export class LancamentosPesquisaComponent {
   lancamentos = [];
 
   pesquisar() {
-    this.lancamentos = this.lancamentosService.pesquisar();
+    this.lancamentosService.pesquisar()
+      .then(resultado => {
+        this.lancamentos = resultado.lancamentos;
+      })
+      .catch(erro => console.log(erro));
   }
 }
