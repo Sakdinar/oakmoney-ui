@@ -27,7 +27,7 @@
 
   <div class="ui-g" >
 
-    <app-lancamentos-grid [lancamentos]="lancamentos" ></app-lancamentos-grid>
+    <app-lancamentos-grid [lancamentos]="lancamentos" *ngIf="lancamentos.length>0" ></app-lancamentos-grid>
 
     <div class="ui-g-12" >
       <a pButton label="Novo Lançamento" ></a>
