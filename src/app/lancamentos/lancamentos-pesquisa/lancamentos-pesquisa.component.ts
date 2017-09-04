@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms/forms';
 
-import { LancamentosService } from './../lancamentos.service';
+import { LancamentosService, LancamentoFiltro } from './../lancamentos.service';
 
 @Component({
   selector: 'app-lancamentos-pesquisa',
@@ -11,10 +11,11 @@ export class LancamentosPesquisaComponent  {
 
   constructor(private lancamentosService: LancamentosService) {}
 
+  descricao: string;
   lancamentos = [];
 
   pesquisar() {
-    this.lancamentosService.pesquisar()
+    this.lancamentosService.pesquisar({ descricao: this.descricao })
       .then(resultado => {
         this.lancamentos = resultado.lancamentos;
       })
