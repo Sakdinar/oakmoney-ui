@@ -1,6 +1,7 @@
 # OakmoneyUi
+Sistema básico para controle financeiro, consumindo a [Oakmoney-API](https://github.com/andersoncvlh/oakmoney-api)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.1.
+* This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.1.
 
 ## Development server
 
