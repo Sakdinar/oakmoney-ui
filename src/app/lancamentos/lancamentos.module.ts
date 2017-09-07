@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { OakCommonsModule } from './../oak-commons/oak-commons.module';
-import { LancamentosGridComponent } from './lancamentos-grid/lancamentos-grid.component';
 import { LancamentosCadastroComponent } from './lancamentos-cadastro/lancamentos-cadastro.component';
 import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
 import { LancamentosService } from './lancamentos.service';
@@ -37,8 +36,7 @@ import { InputTextModule } from 'primeng/components/inputtext/inputtext';
   ],
   declarations: [
     LancamentosPesquisaComponent,
-    LancamentosCadastroComponent,
-    LancamentosGridComponent
+    LancamentosCadastroComponent
   ],
   exports: [
     LancamentosPesquisaComponent,
