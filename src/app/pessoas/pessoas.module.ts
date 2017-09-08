@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { OakCommonsModule } from './../oak-commons/oak-commons.module';
-import { PessoasGridComponent } from './pessoas-grid/pessoas-grid.component';
 import { PessoasCadastroComponent } from './pessoas-cadastro/pessoas-cadastro.component';
 import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
+import { PessoasService } from './pessoas.service';
 
 import { InputMaskModule } from 'primeng/components/inputmask/inputmask';
 import { DropdownModule } from 'primeng/components/dropdown/dropdown';
@@ -30,12 +30,12 @@ import { InputTextModule } from 'primeng/components/inputtext/inputtext';
   ],
   declarations: [
     PessoasPesquisaComponent,
-    PessoasCadastroComponent,
-    PessoasGridComponent,
+    PessoasCadastroComponent
   ],
   exports: [
     PessoasPesquisaComponent,
     PessoasCadastroComponent,
-  ]
+  ],
+  providers: [PessoasService]
 })
 export class PessoasModule { }
