@@ -16,7 +16,7 @@
 
 
     <div class="ui-g-12" >
-      <p-dataTable [value]="pessoas" emptyMessage="Nenhuma pessoa encontrada"
+      <p-dataTable #tabela [value]="pessoas" emptyMessage="Nenhuma pessoa encontrada"
         [rows]="filtro.itensPorPagina" [paginator]="true" [totalRecords]="totalRegistros"
         [lazy]="true" (onLazyLoad)="aoMudarPagina($event)" >
         <p-header>Resutados para Pessoas</p-header>
@@ -34,9 +34,9 @@
           </ng-template>
         </p-column>
         <p-column styleClass="col-action" >
-          <ng-template pTemplate="body" >
+          <ng-template pTemplate="body" let-pessoa="rowData" >
             <a pButton icon="fa-pencil" pTooltip="Editar" tooltipPosition="top" ></a>
-            <button type="button" pButton icon="fa-trash" pTooltip="Remover" tooltipPosition="top" ></button>
+            <button type="button" pButton icon="fa-trash" pTooltip="Remover" tooltipPosition="top" (click)="confirmarExclusao(pessoa)" ></button>
           </ng-template>
         </p-column>
       </p-dataTable>

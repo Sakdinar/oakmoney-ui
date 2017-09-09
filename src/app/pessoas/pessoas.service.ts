@@ -49,4 +49,10 @@ export class PessoasService {
       });
   }
 
+  excluir(codigo: number): Promise<void> {
+    return this.http.delete(`${this.pessoasUrl}/${codigo}`)
+      .toPromise()
+      .then(() => null);
+  }
+
 }
