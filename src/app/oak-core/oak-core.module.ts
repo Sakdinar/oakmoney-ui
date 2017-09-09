@@ -9,6 +9,7 @@ import { ToastyModule } from 'ng2-toasty';
 import { CURRENCY_MASK_CONFIG } from 'ng2-currency-mask/src/currency-mask.config';
 
 import { AuthService } from './../seguranca/auth.service';
+import { CategoriasService } from './../categorias/categorias.service';
 import { ErrorHandlerService } from './error-handler.service';
 import { CustomCurrencyMaskConfig } from './../const/custom-currency-mask-config.const';
 
@@ -33,6 +34,7 @@ import { CustomCurrencyMaskConfig } from './../const/custom-currency-mask-config
     ConfirmationService,
     ErrorHandlerService,
     AuthService,
+    CategoriasService,
     { provide: LOCALE_ID, useValue: 'pt-BR'},
     { provide: CURRENCY_MASK_CONFIG, useValue: CustomCurrencyMaskConfig },
   ]
