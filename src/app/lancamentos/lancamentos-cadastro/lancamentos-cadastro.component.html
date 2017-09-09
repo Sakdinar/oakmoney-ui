@@ -1,57 +1,58 @@
 <div class="container" >
-  <form #lancamentoForm="ngForm" autocomplete="off" >
+  <form #lancamentoForm="ngForm" autocomplete="off" (ngSubmit)="salvar(lancamentoForm)" >
     <div class="ui-g" >
       <div class="ui-g-12" >
         <h1>Novo Lançamento</h1>
       </div>
 
       <div class="ui-g-12"  >
-        <p-selectButton [options]="tipos" #tipo ></p-selectButton>
+        <p-selectButton [options]="tipos" name="tipo" [(ngModel)]="lancamento.tipo" #tipo ></p-selectButton>
       </div>
 
       <div class="ui-g-6 ui-md-3 ui-fluid" >
         <label for="vencimento" class="required" >Vencimento</label>
         <p-calendar name="vencimento" dateFormat="dd/mm/yy"
           [readonlyInput]="true" [showIcon]="true"
-          ngModel #vencimento="ngModel" required></p-calendar>
+          [(ngModel)]="lancamento.dataVencimento"
+          #vencimento="ngModel" required></p-calendar>
           <app-message [control]="vencimento" error="required" params="Vencimento" ></app-message>
       </div>
       <div class="ui-g-6 ui-md-3 ui-fluid" >
         <label for="pagamento">{{ tipo.value=='0' ? 'Recebimento' : 'Pagamento' }}</label>
-        <p-calendar dateFormat="dd/mm/yy" [readonlyInput]="true" [showIcon]="true" ></p-calendar>
+        <p-calendar name="pagamento" dateFormat="dd/mm/yy" [readonlyInput]="true" [showIcon]="true"
+          [(ngModel)]="lancamento.dataPagamento"
+          #pagamento="ngModel"></p-calendar>
       </div>
       <div class="ui-g-12 ui-md-9 ui-fluid">
         <label for="descricao" class="required" >Descrição</label>
         <input pInputText type="text" name="descricao"
-          ngModel #descricao="ngModel" required minlength="5" >
+          [(ngModel)]="lancamento.descricao" #descricao="ngModel" required minlength="5" >
           <app-message [control]="descricao" error="required" params="Descricao" ></app-message>
           <app-message [control]="descricao" error="minlength" params="{{descricao.errors?.minlength?.requiredLength}}" ></app-message>
       </div>
       <div class="ui-g-12 ui-md-3 ui-fluid">
         <label for="valor" class="required" >Valor</label>
         <input pInputText type="text" placeholder="0,00" name="valor" required
-          currencyMask ngModel #valor="ngModel" >
+          currencyMask [(ngModel)]="lancamento.valor" #valor="ngModel" >
         <app-message [control]="valor" error="required" params="Valor" ></app-message>
       </div>
       <div class="ui-g-12 ui-md-6 ui-fluid">
         <label for="categoria" class="required" >Categoria</label>
-        <p-dropdown name="categoria" [options]="categorias" ngModel #categoria="ngModel"
+        <p-dropdown name="categoria" [options]="categorias" [(ngModel)]="lancamento.categoria.codigo"
           [autoWidth]="false" [filter]="true" placeholder="Selecione" ></p-dropdown>
-          <app-message [control]="categoria" error="required" params="Categoria" ></app-message>
       </div>
       <div class="ui-g-12 ui-md-6 ui-fluid">
         <label for="pessoa" class="required" >Pessoa</label>
-        <p-dropdown name="pessoa" [options]="pessoas" ngModel #pessoa="ngModel"
+        <p-dropdown name="pessoa" [options]="pessoas" [(ngModel)]="lancamento.pessoa.codigo"
           [autoWidth]="false" [filter]="true" placeholder="Selecione" ></p-dropdown>
-          <app-message [control]="pessoa" error="required" params="Pessoa" ></app-message>
       </div>
       <div class="ui-g-12 ui-fluid">
         <label for="observacao">Observação</label>
-        <textarea name="observacao" pInputTextarea></textarea>
+        <textarea name="observacao" [(ngModel)]="lancamento.observacao" pInputTextarea></textarea>
       </div>
 
       <div class="ui-g-12" >
-        <button type="button" label="Salvar"
+        <button type="submit" label="Salvar"
           pTooltip="{{ !lancamentoForm.valid ? 'Preencha todos os campos obrigatórios' : 'Salvar' }}" tooltipPosition="bottom"
           [disabled]="!lancamentoForm.valid" pButton ></button>
         <button type="button" pButton label="Limpar" class="ui-button-info" ></button>
