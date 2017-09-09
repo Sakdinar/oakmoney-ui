@@ -34,7 +34,7 @@
     </div>
 
     <div class="ui-g-12" >
-      <p-dataTable [value]="lancamentos" [responsive]="true"
+      <p-dataTable #tabela [value]="lancamentos" [responsive]="true"
         [globalFilter]="globalFilter" emptyMessage="Nenhum lançamento encontrado"
         [rows]="filtro.itensPorPagina" [paginator]="true" [totalRecords]="totalRegistros"
         [lazy]="true" (onLazyLoad)="aoMudarPagina($event)" >
@@ -57,9 +57,10 @@
           </ng-template>
         </p-column>
         <p-column styleClass="col-action" >
-          <ng-template pTemplate="body" >
+          <ng-template pTemplate="body" let-lanc="rowData" >
             <a pButton icon="fa-pencil" pTooltip="Editar" tooltipPosition="top" ></a>
-            <button type="button" pButton icon="fa-trash" pTooltip="Remover" tooltipPosition="top" ></button>
+            <button type="button" pButton icon="fa-trash" pTooltip="Remover" tooltipPosition="top"
+              (click)="confirmarExclusao(lanc)" ></button>
           </ng-template>
         </p-column>
       </p-dataTable>

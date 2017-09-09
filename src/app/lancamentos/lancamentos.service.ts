@@ -52,4 +52,10 @@ export class LancamentosService {
       });
   }
 
+  excluir(codigo: number): Promise<void> {
+    return this.http.delete(`${this.lancamentosUrl}/${codigo}`)
+      .toPromise()
+      .then(() => null);
+  }
+
 }
