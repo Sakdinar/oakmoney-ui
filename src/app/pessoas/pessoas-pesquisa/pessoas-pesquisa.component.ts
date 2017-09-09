@@ -44,6 +44,10 @@ export class PessoasPesquisaComponent {
     });
   }
 
+  alterarStatus(pessoa: any, ativo: boolean) {
+    this.pessoasService.alterarStatus(pessoa, ativo)
+      .then((resultado) => pessoa.ativo = resultado);
+  }
   aoMudarPagina(event: LazyLoadEvent) {
     const pagina = event.first / event.rows;
     this.pesquisar(pagina);

@@ -55,4 +55,13 @@ export class PessoasService {
       .then(() => null);
   }
 
+  alterarStatus(pessoa: any, ativo: boolean): Promise<boolean> {
+    const codigo = pessoa.codigo;
+    return this.http.put(`${this.pessoasUrl}/${codigo}/ativo`, ativo)
+      .toPromise()
+      .then(() => {
+        return ativo;
+      });
+  }
+
 }
