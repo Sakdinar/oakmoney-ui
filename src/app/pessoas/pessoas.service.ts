@@ -21,6 +21,20 @@ export class PessoasService {
 
   constructor(private http: AuthHttp) { }
 
+  listarTodas(): Promise<any> {
+    return this.http.get(this.pessoasUrl)
+      .toPromise()
+      .then((resposta) => {
+        let pessoas = [];
+        if (resposta.status && resposta.status === 200) {
+          const responseJson = resposta.json();
+          pessoas = responseJson.content;
+        }
+
+        return pessoas;
+      });
+  }
+
   pesquisar(filtro: PessoaFiltro): Promise<any> {
     const params = new URLSearchParams();
 
