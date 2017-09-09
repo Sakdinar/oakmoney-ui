@@ -2,10 +2,12 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms/forms';
 import { ConfirmationService } from 'primeng/components/common/confirmationservice';
 
-import { LancamentosService, LancamentoFiltro } from './../lancamentos.service';
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { DataTable } from 'primeng/components/datatable/datatable';
 import { ToastyService } from 'ng2-toasty';
+
+import { LancamentosService, LancamentoFiltro } from './../lancamentos.service';
+import { ErrorHandlerService } from './../../oak-core/error-handler.service';
 
 @Component({
   selector: 'app-lancamentos-pesquisa',
@@ -56,7 +58,8 @@ export class LancamentosPesquisaComponent implements OnInit {
   constructor(
     private lancamentosService: LancamentosService,
     private toasty: ToastyService,
-    private confirmation: ConfirmationService
+    private confirmation: ConfirmationService,
+    private errorHandler: ErrorHandlerService
   ) {}
 
 
@@ -68,7 +71,7 @@ export class LancamentosPesquisaComponent implements OnInit {
         this.lancamentos = resultado.lancamentos;
         this.totalRegistros = resultado.total;
       })
-      .catch(erro => console.log(erro));
+      .catch(erro => this.errorHandler.handle(erro));
   }
 
   confirmarExclusao(lancamento: any) {
