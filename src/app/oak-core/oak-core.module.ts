@@ -1,23 +1,39 @@
 import { NavbarComponent } from './navbar/navbar.component';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AuthService } from './../seguranca/auth.service';
+import { ConfirmDialogModule } from 'primeng/components/confirmdialog/confirmdialog';
+import { ConfirmationService } from 'primeng/components/common/confirmationservice';
 import { JwtHelper } from 'angular2-jwt';
+import { ToastyModule } from 'ng2-toasty';
+import { CURRENCY_MASK_CONFIG } from 'ng2-currency-mask/src/currency-mask.config';
+
+import { AuthService } from './../seguranca/auth.service';
+import { CustomCurrencyMaskConfig } from './../const/custom-currency-mask-config.const';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+
+    ToastyModule.forRoot(),
+    ConfirmDialogModule,
+
   ],
   declarations: [
     NavbarComponent
   ],
   exports: [
-    NavbarComponent
+    NavbarComponent,
+    ToastyModule,
+    ConfirmDialogModule
   ],
   providers: [
+    JwtHelper,
+    ConfirmationService,
+
     AuthService,
-    JwtHelper
+    { provide: LOCALE_ID, useValue: 'pt-BR'},
+    { provide: CURRENCY_MASK_CONFIG, useValue: CustomCurrencyMaskConfig },
   ]
 })
 export class OakCoreModule { }
