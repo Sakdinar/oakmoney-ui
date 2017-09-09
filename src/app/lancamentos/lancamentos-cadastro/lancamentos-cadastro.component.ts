@@ -1,10 +1,12 @@
 import { FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
-import { ErrorHandlerService } from './../../oak-core/error-handler.service';
+import { LancamentosService } from './../lancamentos.service';
 import { CategoriasService } from './../../categorias/categorias.service';
 import { PessoasService } from './../../pessoas/pessoas.service';
 import { Lancamento } from './../../oak-core/models/lancamento';
+import { ToastyService } from 'ng2-toasty';
+import { ErrorHandlerService } from './../../oak-core/error-handler.service';
 
 @Component({
   selector: 'app-lancamentos-cadastro',
@@ -22,8 +24,10 @@ export class LancamentosCadastroComponent implements OnInit {
   lancamento = new Lancamento();
 
   constructor(
+    private lancamentoService: LancamentosService,
     private categoriasService: CategoriasService,
     private pessoasService: PessoasService,
+    private toasty: ToastyService,
     private errorHandler: ErrorHandlerService
   ) { }
 
@@ -41,7 +45,13 @@ export class LancamentosCadastroComponent implements OnInit {
   }
 
   salvar(form: FormControl) {
-    console.log(this.lancamento);
+    this.lancamentoService.salvar(this.lancamento)
+      .then((novoLancamento) => {
+        this.toasty.success('Lançamento adicionado com sucesso.');
+        form.reset();
+        this.lancamento = new Lancamento();
+      })
+      .catch((erro) => this.errorHandler.handle(erro));
   }
   private carregarPessoas() {
     return this.pessoasService.listarTodas()

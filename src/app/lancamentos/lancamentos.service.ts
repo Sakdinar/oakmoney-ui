@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { URLSearchParams } from '@angular/http';
+
 import { AuthHttp } from 'angular2-jwt';
+
+import { Lancamento } from './../oak-core/models/Lancamento';
 
 import 'rxjs/add/operator/toPromise';
 import * as moment from 'moment';
@@ -56,6 +59,12 @@ export class LancamentosService {
     return this.http.delete(`${this.lancamentosUrl}/${codigo}`)
       .toPromise()
       .then(() => null);
+  }
+
+  salvar(lancamento: Lancamento): Promise<Lancamento> {
+    return this.http.post(this.lancamentosUrl, JSON.stringify(lancamento))
+      .toPromise()
+      .then((novoLancamento) => novoLancamento.json());
   }
 
 }
