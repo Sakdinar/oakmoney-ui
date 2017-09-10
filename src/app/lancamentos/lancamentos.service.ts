@@ -3,7 +3,7 @@ import { URLSearchParams } from '@angular/http';
 
 import { AuthHttp } from 'angular2-jwt';
 
-import { Lancamento } from './../oak-core/models/Lancamento';
+import { Lancamento } from './../oak-core/models/lancamento';
 
 import 'rxjs/add/operator/toPromise';
 import * as moment from 'moment';
