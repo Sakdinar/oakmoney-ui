@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -19,6 +20,8 @@ import { InputTextModule } from 'primeng/components/inputtext/inputtext';
   imports: [
     CommonModule,
     FormsModule,
+    RouterModule,
+
     OakCommonsModule,
     InputTextModule,
     ButtonModule,

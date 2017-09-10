@@ -13,13 +13,13 @@
     <li class="navbar-user" >
       Anderson
     </li>
-    <li class="navbar-menuitem" >
-      <a href="#" >
+    <li class="navbar-menuitem" [routerLinkActive]="'ativo'" >
+      <a routerLink="/lancamentos" (click)="exibindoMenu = false" >
         <i class="fa fa-money" aria-hidden="true"></i> Lançamentos
       </a>
     </li>
-    <li class="navbar-menuitem" >
-      <a href="#" >
+    <li class="navbar-menuitem" routerLinkActive="ativo" >
+      <a routerLink="/pessoas" (click)="exibindoMenu = false" >
         <i class="fa fa-user-o" aria-hidden="true"></i> Pessoas
       </a>
     </li>
