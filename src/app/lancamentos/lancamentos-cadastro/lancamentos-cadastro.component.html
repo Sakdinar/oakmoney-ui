@@ -17,8 +17,9 @@
           #vencimento="ngModel" required></p-calendar>
           <app-message [control]="vencimento" error="required" params="Vencimento" ></app-message>
       </div>
+
       <div class="ui-g-6 ui-md-3 ui-fluid" >
-        <label for="pagamento">{{ tipo.value=='0' ? 'Recebimento' : 'Pagamento' }}</label>
+        <label for="pagamento">{{ lancamento.tipo=='RECEITA' ? 'Recebimento' : 'Pagamento' }}</label>
         <p-calendar name="pagamento" dateFormat="dd/mm/yy" [readonlyInput]="true" [showIcon]="true"
           [(ngModel)]="lancamento.dataPagamento"
           #pagamento="ngModel"></p-calendar>
