@@ -16,13 +16,18 @@ import { LancamentosPesquisaComponent } from './lancamentos/lancamentos-pesquisa
 import { LancamentosCadastroComponent } from './lancamentos/lancamentos-cadastro/lancamentos-cadastro.component';
 import { PessoasCadastroComponent } from './pessoas/pessoas-cadastro/pessoas-cadastro.component';
 import { PessoasPesquisaComponent } from './pessoas/pessoas-pesquisa/pessoas-pesquisa.component';
+import { PaginaoNaoEncontratoComponent } from './oak-core/paginao-nao-encontrato/paginao-nao-encontrato.component';
 
 const rotas: Routes = [
+  { path: '', redirectTo: 'lancamentos', pathMatch: 'full' },
   { path: 'lancamentos', component: LancamentosPesquisaComponent },
   { path: 'lancamentos/novo', component: LancamentosCadastroComponent },
   { path: 'lancamentos/:codigo', component: LancamentosCadastroComponent },
   { path: 'pessoas', component: PessoasPesquisaComponent },
-  { path: 'pessoas/novo', component: PessoasCadastroComponent }
+  { path: 'pessoas/novo', component: PessoasCadastroComponent },
+  { path: 'pagina-nao-encontrada', component: PaginaoNaoEncontratoComponent },
+  //  otherwise
+  { path: '**', redirectTo: 'pagina-nao-encontrada' },
 ];
 
 @NgModule({

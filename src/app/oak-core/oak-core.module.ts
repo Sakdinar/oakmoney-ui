@@ -13,6 +13,7 @@ import { AuthService } from './../seguranca/auth.service';
 import { CategoriasService } from './../categorias/categorias.service';
 import { ErrorHandlerService } from './error-handler.service';
 import { CustomCurrencyMaskConfig } from './../const/custom-currency-mask-config.const';
+import { PaginaoNaoEncontratoComponent } from './paginao-nao-encontrato/paginao-nao-encontrato.component';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { CustomCurrencyMaskConfig } from './../const/custom-currency-mask-config
 
   ],
   declarations: [
-    NavbarComponent
+    NavbarComponent,
+    PaginaoNaoEncontratoComponent
   ],
   exports: [
     NavbarComponent,
