@@ -36,14 +36,6 @@ export class LancamentosCadastroComponent implements OnInit {
     this.carregarPessoas();
   }
 
-  private carregarCategorias() {
-    return this.categoriasService.listarTodas()
-      .then(categorias => {
-        this.categorias = categorias.map(c =>  ({ label: c.nome, value: c.codigo }) );
-      })
-      .catch(erro => this.errorHandler.handle(erro));
-  }
-
   salvar(form: FormControl) {
     this.lancamentoService.salvar(this.lancamento)
       .then((novoLancamento) => {
@@ -53,6 +45,15 @@ export class LancamentosCadastroComponent implements OnInit {
       })
       .catch((erro) => this.errorHandler.handle(erro));
   }
+
+  private carregarCategorias() {
+    return this.categoriasService.listarTodas()
+      .then(categorias => {
+        this.categorias = categorias.map(c =>  ({ label: c.nome, value: c.codigo }) );
+      })
+      .catch(erro => this.errorHandler.handle(erro));
+  }
+
   private carregarPessoas() {
     return this.pessoasService.listarTodas()
       .then(pessoas => {
