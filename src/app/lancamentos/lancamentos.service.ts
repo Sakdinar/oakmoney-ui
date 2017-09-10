@@ -55,6 +55,17 @@ export class LancamentosService {
       });
   }
 
+  buscarPorCodigo(codigo: number): Promise<Lancamento> {
+    return this.http.get(`${this.lancamentosUrl}/${codigo}`)
+      .toPromise()
+      .then((response) => {
+        const lancamento = response.json() as Lancamento;
+        this.converterStringsParaData([lancamento]);
+
+        return lancamento;
+      });
+  }
+
   excluir(codigo: number): Promise<void> {
     return this.http.delete(`${this.lancamentosUrl}/${codigo}`)
       .toPromise()
@@ -65,6 +76,18 @@ export class LancamentosService {
     return this.http.post(this.lancamentosUrl, JSON.stringify(lancamento))
       .toPromise()
       .then((novoLancamento) => novoLancamento.json());
+  }
+
+  private converterStringsParaData(lancamentos: Lancamento[]) {
+    for (const lancamento of lancamentos) {
+      lancamento.dataVencimento = moment(lancamento.dataVencimento,
+        'YYYY-MM-DD').toDate();
+
+      if (lancamento.dataPagamento) {
+        lancamento.dataPagamento = moment(lancamento.dataPagamento,
+          'YYYY-MM-DD').toDate();
+      }
+    }
   }
 
 }
