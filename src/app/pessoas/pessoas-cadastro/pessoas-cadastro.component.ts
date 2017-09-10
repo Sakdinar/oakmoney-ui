@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+
+import { ToastyService } from 'ng2-toasty';
+
+import { Pessoa } from './../../oak-core/models/pessoa';
+import { PessoasService } from './../pessoas.service';
+import { ErrorHandlerService } from './../../oak-core/error-handler.service';
 
 @Component({
   selector: 'app-pessoas-cadastro',
@@ -7,117 +14,133 @@ import { Component, OnInit } from '@angular/core';
 export class PessoasCadastroComponent implements OnInit {
 
   estados = [{
-    'value': '1',
+    'value': 'AC',
     'label': 'AC'
   },
        {
-    'value': '2',
+    'value': 'AL',
     'label': 'AL'
   },
        {
-    'value': '3',
+    'value': 'AM',
     'label': 'AM'
   },
        {
-    'value': '4',
+    'value': 'AP',
     'label': 'AP'
   },
        {
-    'value': '5',
+    'value': 'BA',
     'label': 'BA'
   },
        {
-    'value': '6',
+    'value': 'CE',
     'label': 'CE'
   },
        {
-    'value': '7',
+    'value': 'DF',
     'label': 'DF'
   },
        {
-    'value': '8',
+    'value': 'ES',
     'label': 'ES'
   },
        {
-    'value': '9',
+    'value': 'GO',
     'label': 'GO'
   },
        {
-    'value': '10',
+    'value': 'MA',
     'label': 'MA'
   },
        {
-    'value': '11',
+    'value': 'MG',
     'label': 'MG'
   },
        {
-    'value': '12',
+    'value': 'MS',
     'label': 'MS'
   },
        {
-    'value': '13',
+    'value': 'MT',
     'label': 'MT'
   },
        {
-    'value': '14',
+    'value': 'PA',
     'label': 'PA'
   },
        {
-    'value': '15',
+    'value': 'PB',
     'label': 'PB'
   },
        {
-    'value': '16',
+    'value': 'PE',
     'label': 'PE'
   },
        {
-    'value': '17',
+    'value': 'PI',
     'label': 'PI'
   },
        {
-    'value': '18',
+    'value': 'PR',
     'label': 'PR'
   },
        {
-    'value': '19',
+    'value': 'RJ',
     'label': 'RJ'
   },
        {
-    'value': '20',
+    'value': 'RN',
     'label': 'RN'
   },
        {
-    'value': '21',
+    'value': 'RO',
     'label': 'RO'
   },
        {
-    'value': '22',
+    'value': 'RR',
     'label': 'RR'
   },
        {
-    'value': '23',
+    'value': 'RS',
     'label': 'RS'
   },
        {
-    'value': '24',
+    'value': 'SC',
     'label': 'SC'
   },
        {
-    'value': '25',
+    'value': 'SE',
     'label': 'SE'
   },
        {
-    'value': '26',
+    'value': 'SP',
     'label': 'SP'
   },
        {
-    'value': '27',
+    'value': 'TO',
     'label': 'TO'
   }];
 
-  constructor() { }
+  pessoa = new Pessoa();
+
+  constructor(
+    private pessoasService: PessoasService,
+    private toasty: ToastyService,
+    private errorHandler: ErrorHandlerService
+  ) { }
 
   ngOnInit() {
+  }
+
+  salvar(form: FormControl) {
+    this.pessoasService.salvar(this.pessoa)
+      .then((novaPessoa) => {
+        this.toasty.success(`${novaPessoa.nome} inserido(a) com sucesso.`);
+        form.reset();
+        this.pessoa = new Pessoa();
+      })
+      .catch((erro) => this.errorHandler.handle(erro));
   }
 
 }

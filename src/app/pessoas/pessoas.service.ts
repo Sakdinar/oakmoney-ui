@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { URLSearchParams } from '@angular/http';
+
 import { AuthHttp } from 'angular2-jwt';
+
+import { Pessoa } from './../oak-core/models/pessoa';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -76,6 +79,12 @@ export class PessoasService {
       .then(() => {
         return ativo;
       });
+  }
+
+  salvar(pessoa: Pessoa): Promise<Pessoa> {
+    return this.http.post(this.pessoasUrl, JSON.stringify(pessoa))
+      .toPromise()
+      .then((novoLancamento) => novoLancamento.json());
   }
 
 }

@@ -1,5 +1,5 @@
 <div class="container" >
-  <form #pessoaForm="ngForm" autocomplete="off" >
+  <form #pessoaForm="ngForm" autocomplete="off" (ngSubmit)="salvar(pessoaForm)" >
     <div class="ui-g" >
 
       <div class="ui-g-12" >
@@ -9,31 +9,31 @@
       <div class="ui-g-12 ui-fluid" >
         <label for="nome" class="required" >Nome</label>
         <input name="nome" type="text" pInputText
-          required minlength="3" ngModel #nome="ngModel" >
+          required minlength="3" [(ngModel)]="pessoa.nome" #nome="ngModel" >
         <app-message [control]="nome" error="required" params="Nome" ></app-message>
         <app-message [control]="nome" error="minlength" params="{{nome.errors?.minlength?.requiredLength}}" ></app-message>
       </div>
       <div class="ui-g-12 ui-md-9 ui-fluid">
         <label for="logradouro" class="required" >Logradouro</label>
         <input name="logradouro" type="text" pInputText
-          required ngModel #logradouro="ngModel"  >
+          required [(ngModel)]="pessoa.endereco.logradouro" #logradouro="ngModel"  >
         <app-message [control]="logradouro" error="required" params="Logradouro" ></app-message>
       </div>
       <div class="ui-g-12 ui-md-3 ui-fluid">
         <label for="numero" class="required" >Número</label>
         <p-inputMask name="numero" mask="9?999999999999999999999" slotChar=" "
-          required ngModel #numero="ngModel" ></p-inputMask>
+          required [(ngModel)]="pessoa.endereco.numero" #numero="ngModel" ></p-inputMask>
         <app-message [control]="numero" error="required" params="Número" ></app-message>
       </div>
       <div class="ui-g-12 ui-md-10 ui-fluid">
         <label for="complemento">Complemento</label>
-        <input name="complemento" type="text" pInputText ngModel #complemento="ngModel" >
+        <input name="complemento" type="text" pInputText [(ngModel)]="pessoa.endereco.complemento" #complemento="ngModel" >
       </div>
 
       <div class="ui-g-12 ui-md-2 ui-fluid">
         <label for="cep" class="required" >CEP</label>
         <p-inputMask name="cep" mask="99.999-999"
-          required minlength="8" ngModel #cep="ngModel" ></p-inputMask>
+          required minlength="8" [(ngModel)]="pessoa.endereco.cep" #cep="ngModel" ></p-inputMask>
           <app-message [control]="cep" error="required" params="CEP" ></app-message>
           <app-message [control]="cep" error="minlength" params="CEP" params="{{cep.errors?.minlength?.requiredLength}}" ></app-message>
       </div>
@@ -41,27 +41,28 @@
       <div class="ui-g-12 ui-md-5 ui-fluid">
         <label for="bairro" class="required" >Bairro</label>
         <input name="bairro" type="text" pInputText
-          required ngModel #bairro="ngModel" >
+          required [(ngModel)]="pessoa.endereco.bairro" #bairro="ngModel" >
           <app-message [control]="bairro" error="required" params="Bairro" ></app-message>
       </div>
       <div class="ui-g-12 ui-md-5 ui-fluid">
         <label for="cidade" class="required" >Cidade</label>
         <input name="cidade" type="text" pInputText
-          required ngModel #cidade="ngModel" >
+          required [(ngModel)]="pessoa.endereco.cidade" #cidade="ngModel" >
         <app-message [control]="cidade" error="required" params="Cidade" ></app-message>
       </div>
       <div class="ui-g-12 ui-md-2 ui-fluid">
         <label for="estado" class="required" >Estado</label>
         <p-dropdown name="estado" [options]="estados" [autoWidth]="false" [filter]="true" placeholder="Selecione"
-          required ngModel #estado="ngModel" ></p-dropdown>
+          required [(ngModel)]="pessoa.endereco.estado" #estado="ngModel" ></p-dropdown>
         <app-message [control]="estado" error="required" params="Estado" ></app-message>
       </div>
     </div>
 
     <div class="ui-g-12 " >
-      <button pButton label="Salvar" type="button"
-        [disabled]="!pessoaForm.valid"
-          pTooltip="{{ !pessoaForm.valid ? 'Preencha todos os campos obrigatórios' : 'Salvar' }}" tooltipPosition="bottom" ></button>
+      <button pButton label="Salvar" type="submit" [disabled]="!pessoaForm.valid"
+        pTooltip="{{ !pessoaForm.valid ? 'Preencha todos os campos obrigatórios' : 'Salvar' }}"
+        tooltipPosition="bottom" >
+      </button>
       <button pButton label="Novo" type="button" class="ui-button-info" ></button>
       <a href="javascript:;">Voltar para a pesquisa</a>
     </div>
