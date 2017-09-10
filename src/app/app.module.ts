@@ -20,6 +20,7 @@ import { PessoasPesquisaComponent } from './pessoas/pessoas-pesquisa/pessoas-pes
 const rotas: Routes = [
   { path: 'lancamentos', component: LancamentosPesquisaComponent },
   { path: 'lancamentos/novo', component: LancamentosCadastroComponent },
+  { path: 'lancamentos/:codigo', component: LancamentosCadastroComponent },
   { path: 'pessoas', component: PessoasPesquisaComponent },
   { path: 'pessoas/novo', component: PessoasCadastroComponent }
 ];
