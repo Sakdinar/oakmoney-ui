@@ -1,6 +1,6 @@
 import { FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { LancamentosService } from './../lancamentos.service';
 import { CategoriasService } from './../../categorias/categorias.service';
@@ -31,12 +31,13 @@ export class LancamentosCadastroComponent implements OnInit {
     private pessoasService: PessoasService,
     private toasty: ToastyService,
     private errorHandler: ErrorHandlerService,
-    private route: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit() {
-    if (undefined !== this.route.snapshot.params['codigo']) {
-      const codigo = this.route.snapshot.params['codigo'];
+    if (undefined !== this.activatedRoute.snapshot.params['codigo']) {
+      const codigo = this.activatedRoute.snapshot.params['codigo'];
       this.pesquisarLancamentoParaAtualizar(codigo);
       this.isEdit = true;
       this.pageTitle = 'Atualizar Lançamento';
@@ -47,14 +48,20 @@ export class LancamentosCadastroComponent implements OnInit {
 
   salvar(form: FormControl) {
     if (this.isEdit) {
-      console.log('Atualizar');
+      this.atualizarLancamento(form);
     } else {
       this.novoLancamento(form);
     }
   }
 
   private atualizarLancamento(form: FormControl) {
-    //  TODO: atualizar lancamento, lancar msg de sucesso e retornar para pesquisa
+    this.lancamentoService.atualizar(this.lancamento)
+      .then(() => {
+        form.reset();
+        this.router.navigate(['/lancamentos']);
+        this.toasty.success('Lançamento atualizado com sucesso.');
+      })
+      .catch((erro) => this.errorHandler.handle(erro));
   }
 
   private novoLancamento(form: FormControl) {

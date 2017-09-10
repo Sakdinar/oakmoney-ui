@@ -78,6 +78,14 @@ export class LancamentosService {
       .then((novoLancamento) => novoLancamento.json());
   }
 
+  atualizar(lancamento: Lancamento): Promise<Lancamento> {
+    return this.http.put(`${this.lancamentosUrl}/${lancamento.codigo}`, JSON.stringify(lancamento))
+      .toPromise()
+      .then((response) => {
+        return response.json();
+      });
+  }
+
   private converterStringsParaData(lancamentos: Lancamento[]) {
     for (const lancamento of lancamentos) {
       lancamento.dataVencimento = moment(lancamento.dataVencimento,
