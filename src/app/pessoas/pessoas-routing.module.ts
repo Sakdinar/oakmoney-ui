@@ -15,28 +15,16 @@ import { TooltipModule } from 'primeng/components/tooltip/tooltip';
 import { DataTableModule } from 'primeng/components/datatable/datatable';
 import { ButtonModule } from 'primeng/components/button/button';
 import { InputTextModule } from 'primeng/components/inputtext/inputtext';
-import { PessoasRoutingModule } from './pessoas-routing.module';
+
+const rotasPessoa = [
+  { path: 'pessoas', component: PessoasPesquisaComponent },
+  { path: 'pessoas/novo', component: PessoasCadastroComponent },
+];
 
 @NgModule({
   imports: [
-    CommonModule,
-    FormsModule,
-
-    OakCommonsModule,
-    InputTextModule,
-    ButtonModule,
-    DataTableModule,
-    TooltipModule,
-    InputTextareaModule,
-    DropdownModule,
-    InputMaskModule,
-    PessoasRoutingModule,
+    RouterModule.forChild(rotasPessoa)
   ],
-  declarations: [
-    PessoasPesquisaComponent,
-    PessoasCadastroComponent
-  ],
-  exports: [],
-  providers: [PessoasService]
+  exports: [RouterModule]
 })
-export class PessoasModule { }
+export class PessoasRoutingModule { }

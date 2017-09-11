@@ -9,9 +9,6 @@ import { PaginaoNaoEncontratoComponent } from './oak-core/paginao-nao-encontrato
 
 const rotas: Routes = [
   { path: '', redirectTo: 'lancamentos', pathMatch: 'full' },
-
-  { path: 'pessoas', component: PessoasPesquisaComponent },
-  { path: 'pessoas/novo', component: PessoasCadastroComponent },
   { path: 'pagina-nao-encontrada', component: PaginaoNaoEncontratoComponent },
   //  otherwise
   { path: '**', redirectTo: 'pagina-nao-encontrada' },
