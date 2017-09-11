@@ -1,7 +1,6 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 
@@ -12,23 +11,7 @@ import { OakCoreModule } from './oak-core/oak-core.module';
 import { SegurancaModule } from './seguranca/seguranca.module';
 import { PessoasModule } from './pessoas/pessoas.module';
 import { LancamentosModule } from './lancamentos/lancamentos.module';
-import { LancamentosPesquisaComponent } from './lancamentos/lancamentos-pesquisa/lancamentos-pesquisa.component';
-import { LancamentosCadastroComponent } from './lancamentos/lancamentos-cadastro/lancamentos-cadastro.component';
-import { PessoasCadastroComponent } from './pessoas/pessoas-cadastro/pessoas-cadastro.component';
-import { PessoasPesquisaComponent } from './pessoas/pessoas-pesquisa/pessoas-pesquisa.component';
-import { PaginaoNaoEncontratoComponent } from './oak-core/paginao-nao-encontrato/paginao-nao-encontrato.component';
-
-const rotas: Routes = [
-  { path: '', redirectTo: 'lancamentos', pathMatch: 'full' },
-  { path: 'lancamentos', component: LancamentosPesquisaComponent },
-  { path: 'lancamentos/novo', component: LancamentosCadastroComponent },
-  { path: 'lancamentos/:codigo', component: LancamentosCadastroComponent },
-  { path: 'pessoas', component: PessoasPesquisaComponent },
-  { path: 'pessoas/novo', component: PessoasCadastroComponent },
-  { path: 'pagina-nao-encontrada', component: PaginaoNaoEncontratoComponent },
-  //  otherwise
-  { path: '**', redirectTo: 'pagina-nao-encontrada' },
-];
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -38,12 +21,12 @@ const rotas: Routes = [
     BrowserAnimationsModule,
     BrowserModule,
     HttpModule,
-    RouterModule.forRoot(rotas),
 
     OakCoreModule,
     SegurancaModule,
     LancamentosModule,
     PessoasModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

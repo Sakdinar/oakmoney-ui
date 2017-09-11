@@ -1,4 +1,3 @@
-import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -18,12 +17,12 @@ import { TooltipModule } from 'primeng/components/tooltip/tooltip';
 import { DataTableModule } from 'primeng/components/datatable/datatable';
 import { ButtonModule } from 'primeng/components/button/button';
 import { InputTextModule } from 'primeng/components/inputtext/inputtext';
+import { LancamentosRoutingModule } from './lancamentos-routing.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule,
 
     OakCommonsModule,
     InputTextModule,
@@ -36,6 +35,8 @@ import { InputTextModule } from 'primeng/components/inputtext/inputtext';
     DropdownModule,
     InputMaskModule,
     CurrencyMaskModule,
+
+    LancamentosRoutingModule,
   ],
   declarations: [
     LancamentosPesquisaComponent,
