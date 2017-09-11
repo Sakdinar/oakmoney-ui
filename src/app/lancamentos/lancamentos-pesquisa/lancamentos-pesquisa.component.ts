@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms/forms';
-import { ConfirmationService } from 'primeng/components/common/confirmationservice';
+import { Title } from '@angular/platform-browser';
 
+import { ConfirmationService } from 'primeng/components/common/confirmationservice';
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { DataTable } from 'primeng/components/datatable/datatable';
 import { ToastyService } from 'ng2-toasty';
@@ -24,6 +25,7 @@ export class LancamentosPesquisaComponent implements OnInit {
   @ViewChild('tabela') grid: DataTable;
 
   ngOnInit(): void {
+    this.title.setTitle('Pesquisa de Lançamentos');
 
     this.pt_calendar = {
       firstDayOfWeek: 0,
@@ -59,7 +61,8 @@ export class LancamentosPesquisaComponent implements OnInit {
     private lancamentosService: LancamentosService,
     private toasty: ToastyService,
     private confirmation: ConfirmationService,
-    private errorHandler: ErrorHandlerService
+    private errorHandler: ErrorHandlerService,
+    private title: Title
   ) {}
 
 

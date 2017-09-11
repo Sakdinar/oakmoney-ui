@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -32,15 +33,18 @@ export class LancamentosCadastroComponent implements OnInit {
     private toasty: ToastyService,
     private errorHandler: ErrorHandlerService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private title: Title
   ) { }
 
   ngOnInit() {
+    this.title.setTitle('Cadastro de Lançamento');
     if (undefined !== this.activatedRoute.snapshot.params['codigo']) {
       const codigo = this.activatedRoute.snapshot.params['codigo'];
       this.pesquisarLancamentoParaAtualizar(codigo);
       this.isEdit = true;
       this.pageTitle = 'Atualizar Lançamento';
+
     }
     this.carregarCategorias();
     this.carregarPessoas();
@@ -92,7 +96,14 @@ export class LancamentosCadastroComponent implements OnInit {
 
   private pesquisarLancamentoParaAtualizar(codigo: number) {
     this.lancamentoService.buscarPorCodigo(codigo)
-    .then((lancamentoConsultado) => this.lancamento = lancamentoConsultado);
+    .then((lancamentoConsultado) => {
+      this.lancamento = lancamentoConsultado;
+      this.atualizarTitle();
+    });
+  }
+
+  private atualizarTitle() {
+    this.title.setTitle(`Atualização de Lançamento: ${this.lancamento.descricao}`);
   }
 
 }
