@@ -3,7 +3,7 @@
     <div class="ui-g" >
 
       <div class="ui-g-12" >
-        <h1>Pessoas</h1>
+        <h1>{{pageTitle}}</h1>
       </div>
 
       <div class="ui-g-12 ui-fluid" >
@@ -63,7 +63,7 @@
         pTooltip="{{ !pessoaForm.valid ? 'Preencha todos os campos obrigatórios' : 'Salvar' }}"
         tooltipPosition="bottom" >
       </button>
-      <button pButton label="Novo" type="button" class="ui-button-info" ></button>
+      <button pButton label="Limpar" type="button" class="ui-button-info" ></button>
       <a routerLink="/pessoas">Voltar para a pesquisa</a>
     </div>
   </form>

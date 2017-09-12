@@ -1,3 +1,6 @@
+import { Lancamento } from './../../oak-core/models/Lancamento';
+import { Title } from '@angular/platform-browser';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
@@ -123,17 +126,35 @@ export class PessoasCadastroComponent implements OnInit {
   }];
 
   pessoa = new Pessoa();
+  pageTitle = 'Cadastro de Pessoa';
 
   constructor(
     private pessoasService: PessoasService,
     private toasty: ToastyService,
-    private errorHandler: ErrorHandlerService
+    private errorHandler: ErrorHandlerService,
+    private activatedRoute: ActivatedRoute,
+    private title: Title,
+    private router: Router
   ) { }
 
   ngOnInit() {
+    this.title.setTitle(this.pageTitle);
+    const codigo = this.activatedRoute.snapshot.params['codigo'];
+    if (codigo) {
+      this.buscarPorCodigo(codigo);
+      this.pageTitle = 'Atualizar Pessoa';
+    }
   }
 
   salvar(form: FormControl) {
+    if (this.pessoa.codigo) {
+      this.atualizar(form);
+    } else {
+      this.novaPessoa(form);
+    }
+  }
+
+  private novaPessoa(form: FormControl) {
     this.pessoasService.salvar(this.pessoa)
       .then((novaPessoa) => {
         this.toasty.success(`${novaPessoa.nome} inserido(a) com sucesso.`);
@@ -141,6 +162,24 @@ export class PessoasCadastroComponent implements OnInit {
         this.pessoa = new Pessoa();
       })
       .catch((erro) => this.errorHandler.handle(erro));
+  }
+
+  private atualizar(form: FormControl) {
+    this.pessoasService.atualizar(this.pessoa)
+      .then(() => {
+        form.reset();
+        this.router.navigate(['/pessoas']);
+        this.toasty.success('Pessoa atualizada com sucesso.');
+      })
+      .catch((erro) => this.errorHandler.handle(erro));
+  }
+
+  private buscarPorCodigo(codigo: number) {
+    this.pessoasService.buscarPorCodigo(codigo)
+      .then((pessoaConsultada) => {
+        this.pessoa = pessoaConsultada;
+        this.title.setTitle(`Atualização de Pessoa: ${this.pessoa.nome}`);
+      });
   }
 
 }

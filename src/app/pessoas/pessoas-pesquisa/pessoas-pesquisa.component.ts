@@ -1,4 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { Component, ViewChild, OnInit } from '@angular/core';
 
 import { ToastyService } from 'ng2-toasty';
 import { DataTable } from 'primeng/components/datatable/datatable';
@@ -12,18 +13,22 @@ import { ErrorHandlerService } from './../../oak-core/error-handler.service';
   selector: 'app-pessoas-pesquisa',
   templateUrl: './pessoas-pesquisa.component.html'
 })
-export class PessoasPesquisaComponent {
-
-  pessoas = [];
+export class PessoasPesquisaComponent implements OnInit {
+    pessoas = [];
   filtro = new PessoaFiltro();
   totalRegistros = 0;
   @ViewChild('tabela') grid: DataTable;
+
+  ngOnInit(): void {
+    this.title.setTitle('Pesquisa de Pessoa');
+  }
 
   constructor(
     private pessoasService: PessoasService,
     private toasty: ToastyService,
     private confirmation: ConfirmationService,
-    private errorHandler: ErrorHandlerService
+    private errorHandler: ErrorHandlerService,
+    private title: Title
   ) {}
 
   pesquisar(pagina = 0) {

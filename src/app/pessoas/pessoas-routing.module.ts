@@ -19,6 +19,7 @@ import { InputTextModule } from 'primeng/components/inputtext/inputtext';
 const rotasPessoa = [
   { path: 'pessoas', component: PessoasPesquisaComponent },
   { path: 'pessoas/novo', component: PessoasCadastroComponent },
+  { path: 'pessoas/:codigo', component: PessoasCadastroComponent },
 ];
 
 @NgModule({

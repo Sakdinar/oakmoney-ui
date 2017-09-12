@@ -87,4 +87,20 @@ export class PessoasService {
       .then((novoLancamento) => novoLancamento.json());
   }
 
+  buscarPorCodigo(codigo: number): Promise<Pessoa> {
+    return this.http.get(`${this.pessoasUrl}/${codigo}`)
+      .toPromise()
+      .then((pessoa) => {
+        return pessoa.json();
+      });
+  }
+
+  atualizar(pessoa: Pessoa): Promise<Pessoa> {
+    return this.http.put(`${this.pessoasUrl}/${pessoa.codigo}`, JSON.stringify(pessoa))
+      .toPromise()
+      .then((pessoaAtualizada) => {
+        return pessoaAtualizada.json();
+      });
+  }
+
 }
