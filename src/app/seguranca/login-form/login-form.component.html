@@ -1,4 +1,3 @@
-{{ authService.jwtPayload | json }}
 <div class="container" style="max-width: 400px; margin: auto" >
   <form #loginForm="ngForm" autocomplete="off">
     <div class="ui-g" >
@@ -17,7 +16,7 @@
 
       <div class="ui-g-12">
         <button pButton type="submit" label="Login" [disabled]="!loginForm.valid"
-          (click)="login(usuario.value, senha.value)"></button>
+          (click)="login(usuario.value, senha.value); senha.value = '';"></button>
       </div>
 
     </div>
