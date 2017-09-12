@@ -11,7 +11,7 @@
 
   <ul class="navbar-menu" [hidden]="!exibindoMenu" >
     <li class="navbar-user" >
-      Anderson
+      {{ auth.jwtPayload?.nome }}
     </li>
     <li class="navbar-menuitem" [routerLinkActive]="'ativo'" >
       <a routerLink="/lancamentos" (click)="exibindoMenu = false" >
