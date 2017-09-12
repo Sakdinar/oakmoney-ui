@@ -42,6 +42,10 @@ export class AuthService {
       });
   }
 
+  temPermissao(permissao: string) {
+    return this.jwtPayload && this.jwtPayload.authorities.includes(permissao);
+  }
+
   /**
    * Decodifica e armazena no localStorage do browser
    * @param token
