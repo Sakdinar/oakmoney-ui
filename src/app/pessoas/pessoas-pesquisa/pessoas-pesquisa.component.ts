@@ -8,6 +8,7 @@ import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 
 import { PessoasService, PessoaFiltro } from './../pessoas.service';
 import { ErrorHandlerService } from './../../oak-core/error-handler.service';
+import { AuthService } from './../../seguranca/auth.service';
 
 @Component({
   selector: 'app-pessoas-pesquisa',
@@ -28,7 +29,8 @@ export class PessoasPesquisaComponent implements OnInit {
     private toasty: ToastyService,
     private confirmation: ConfirmationService,
     private errorHandler: ErrorHandlerService,
-    private title: Title
+    private title: Title,
+    private auth: AuthService
   ) {}
 
   pesquisar(pagina = 0) {

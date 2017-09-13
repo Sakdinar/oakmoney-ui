@@ -22,7 +22,8 @@
 
       <div class="ui-g-12" >
         <button pButton type="submit" class="ui-button-primary" label="Pesquisar" ></button>
-        <a pButton class="ui-button-info" label="Novo" routerLink="/lancamentos/novo" ></a>
+        <a pButton class="ui-button-info" label="Novo" routerLink="/lancamentos/novo"
+          *ngIf="auth.temPermissao('ROLE_CADASTRAR_LANCAMENTO')"></a>
       </div>
     </form>
 
@@ -57,12 +58,12 @@
             <span [style.color]=" lanc.tipo === 'DESPESA' ? 'red' : 'blue' " >{{lanc.valor | currency:'BRL':true:'1.2-2'}}</span>
           </ng-template>
         </p-column>
-        <p-column styleClass="col-action" >
+        <p-column styleClass="col-action" *ngIf="auth.temPermissao('ROLE_CADASTRAR_LANCAMENTO') || auth.temPermissao('ROLE_REMOVER_LANCAMENTO')" >
           <ng-template pTemplate="body" let-lanc="rowData" >
             <a pButton icon="fa-pencil" pTooltip="Editar" tooltipPosition="top"
-              [routerLink]="['/lancamentos', lanc.codigo]" ></a>
+              [routerLink]="['/lancamentos', lanc.codigo]" *ngIf="auth.temPermissao('ROLE_CADASTRAR_LANCAMENTO')" ></a>
             <button type="button" pButton icon="fa-trash" pTooltip="Remover" tooltipPosition="top"
-              (click)="confirmarExclusao(lanc)" ></button>
+              (click)="confirmarExclusao(lanc)" *ngIf="auth.temPermissao('ROLE_REMOVER_LANCAMENTO')" ></button>
           </ng-template>
         </p-column>
       </p-dataTable>
