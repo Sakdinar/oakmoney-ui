@@ -15,6 +15,7 @@ import { CategoriasService } from './../categorias/categorias.service';
 import { ErrorHandlerService } from './error-handler.service';
 import { CustomCurrencyMaskConfig } from './../const/custom-currency-mask-config.const';
 import { PaginaoNaoEncontratoComponent } from './paginao-nao-encontrato/paginao-nao-encontrato.component';
+import { NaoAutorizadoComponent } from './nao-autorizado/nao-autorizado.component';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { PaginaoNaoEncontratoComponent } from './paginao-nao-encontrato/paginao-
   ],
   declarations: [
     NavbarComponent,
-    PaginaoNaoEncontratoComponent
+    PaginaoNaoEncontratoComponent,
+    NaoAutorizadoComponent
   ],
   exports: [
     NavbarComponent,

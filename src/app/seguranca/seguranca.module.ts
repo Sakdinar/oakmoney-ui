@@ -11,6 +11,7 @@ import { OakCommonsModule } from './../oak-commons/oak-commons.module';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { AuthService } from './auth.service';
 import { OakmoneyHttpInterceptor } from './oakmoney-http-interceptor';
+import { AuthGuard } from './auth.guard';
 
 export function authHttpServiceFactory(auth: AuthService, http: Http, options: RequestOptions) {
   const config = new AuthConfig({
@@ -37,7 +38,8 @@ export function authHttpServiceFactory(auth: AuthService, http: Http, options: R
       provide: AuthHttp,
       useFactory: authHttpServiceFactory,
       deps: [AuthService, Http, RequestOptions]
-    }
+    },
+    AuthGuard
   ]
 })
 export class SegurancaModule { }

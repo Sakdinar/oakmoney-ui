@@ -7,11 +7,13 @@ import { LancamentosCadastroComponent } from './lancamentos/lancamentos-cadastro
 import { PessoasCadastroComponent } from './pessoas/pessoas-cadastro/pessoas-cadastro.component';
 import { PessoasPesquisaComponent } from './pessoas/pessoas-pesquisa/pessoas-pesquisa.component';
 import { PaginaoNaoEncontratoComponent } from './oak-core/paginao-nao-encontrato/paginao-nao-encontrato.component';
+import { NaoAutorizadoComponent } from './oak-core/nao-autorizado/nao-autorizado.component';
 
 const rotas: Routes = [
   { path: '', redirectTo: 'lancamentos', pathMatch: 'full' },
   { path: 'login', component: LoginFormComponent },
   { path: 'pagina-nao-encontrada', component: PaginaoNaoEncontratoComponent },
+  { path: 'nao-autorizado', component: NaoAutorizadoComponent },
   //  otherwise
   { path: '**', redirectTo: 'pagina-nao-encontrada' },
 ];

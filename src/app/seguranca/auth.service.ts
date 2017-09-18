@@ -74,6 +74,22 @@ export class AuthService {
   }
 
   /**
+   *
+   * @param roles
+   * Retorna true se contém pelo menos uma das permissões do array
+   *
+   */
+  temUmaDasPermissoes(roles: string[]) {
+    for (const role of roles) {
+      if (this.temPermissao(role)) {
+        return true;
+      }
+    }
+
+  return false;
+  }
+
+  /**
    * Decodifica e armazena no localStorage do browser
    * @param token
    */

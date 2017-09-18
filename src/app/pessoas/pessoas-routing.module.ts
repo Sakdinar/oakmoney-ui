@@ -15,11 +15,28 @@ import { TooltipModule } from 'primeng/components/tooltip/tooltip';
 import { DataTableModule } from 'primeng/components/datatable/datatable';
 import { ButtonModule } from 'primeng/components/button/button';
 import { InputTextModule } from 'primeng/components/inputtext/inputtext';
+import { AuthGuard } from './../seguranca/auth.guard';
 
 const rotasPessoa = [
-  { path: 'pessoas', component: PessoasPesquisaComponent },
-  { path: 'pessoas/novo', component: PessoasCadastroComponent },
-  { path: 'pessoas/:codigo', component: PessoasCadastroComponent },
+  {
+    path: 'pessoas',
+    component: PessoasPesquisaComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_PESQUISAR_PESSOA'] }
+  },
+  {
+    path: 'pessoas/novo',
+    component: PessoasCadastroComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_CADASTRAR_PESSOA'] }
+  },
+  {
+    path: 'pessoas/:codigo',
+    component: PessoasCadastroComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_CADASTRAR_PESSOA'] }
+  }
+    ,
 ];
 
 @NgModule({
