@@ -5,6 +5,7 @@ import { AuthConfig, AuthHttp, JwtHelper } from 'angular2-jwt';
 import { Observable } from 'rxjs/Observable';
 
 import { AuthService } from './auth.service';
+import { NotAuthenticatedError } from './../oak-core/error-handler.service';
 
 /**
  * Classe responsavel por interceptar as requisicoes ao servidor para renovacao do token
@@ -60,6 +61,10 @@ export class OakmoneyHttpInterceptor extends AuthHttp {
 
       const chamadaNovoAccessToken = this.auth.obterNovoAccessToken()
         .then(() => {
+          if (this.auth.isAccessTokenInvalido()) {
+            throw new NotAuthenticatedError();
+          }
+
           return fn().toPromise();
         });
 

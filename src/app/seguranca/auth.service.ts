@@ -56,7 +56,7 @@ export class AuthService {
         return Promise.resolve(null);
       })
       .catch((erro) => {
-        console.error('Erro ao renovar token', erro)
+        console.error('Erro ao renovar token', erro);
         return Promise.resolve(null);
       });
   }
