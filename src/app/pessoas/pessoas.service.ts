@@ -5,6 +5,7 @@ import { AuthHttp } from 'angular2-jwt';
 
 import { Pessoa } from './../oak-core/models/pessoa';
 
+import { environment } from './../../environments/environment';
 import 'rxjs/add/operator/toPromise';
 
 export class PessoaFiltro {
@@ -20,9 +21,11 @@ export class PessoaFiltro {
 @Injectable()
 export class PessoasService {
 
-  pessoasUrl = 'http://localhost:8080/pessoas';
+  pessoasUrl: string;
 
-  constructor(private http: AuthHttp) { }
+  constructor(private http: AuthHttp) {
+    this.pessoasUrl = `${environment.apiUrl}/pessoas`;
+  }
 
   listarTodas(): Promise<any> {
     return this.http.get(this.pessoasUrl)

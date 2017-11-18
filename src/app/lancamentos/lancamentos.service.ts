@@ -5,6 +5,7 @@ import { AuthHttp } from 'angular2-jwt';
 
 import { Lancamento } from './../oak-core/models/lancamento';
 
+import { environment } from './../../environments/environment';
 import 'rxjs/add/operator/toPromise';
 import * as moment from 'moment';
 
@@ -19,9 +20,11 @@ export class LancamentoFiltro {
 @Injectable()
 export class LancamentosService {
 
-  lancamentosUrl = 'http://localhost:8080/lancamentos';
+  lancamentosUrl: string;
 
-  constructor(private http: AuthHttp) { }
+  constructor(private http: AuthHttp) {
+    this.lancamentosUrl = `${environment.apiUrl}/lancamentos`;
+  }
 
   pesquisar(filtro: LancamentoFiltro): Promise<any> {
     const params = new URLSearchParams();
