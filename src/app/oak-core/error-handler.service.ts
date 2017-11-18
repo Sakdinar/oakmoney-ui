@@ -23,7 +23,6 @@ export class ErrorHandlerService {
     } else if (erroResponse instanceof NotAuthenticatedError) {
       msg = 'Sessão expirada. Realize login novamente';
       this.router.navigate(['/login']);
-
     } else if (
         erroResponse instanceof Response
         && erroResponse.status >= 400
