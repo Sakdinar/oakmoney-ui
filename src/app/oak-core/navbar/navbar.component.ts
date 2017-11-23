@@ -12,11 +12,13 @@ import { ErrorHandlerService } from './../error-handler.service';
 })
 export class NavbarComponent implements OnInit {
 
+  exibindoMenu = false;
+
   constructor(
-    private auth: AuthService,
+    public auth: AuthService,
     private logoutService: LogoutService,
     private router: Router,
-    private erroHandler: ErrorHandlerService
+    private erroHandler: ErrorHandlerService,
   ) { }
 
   ngOnInit() {
@@ -26,8 +28,14 @@ export class NavbarComponent implements OnInit {
     this.logoutService.logout()
       .then(() => {
         this.router.navigate(['/login']);
+        this.exibindoMenu = false;
       })
       .catch((error) => this.erroHandler.handle(error));
+  }
+
+  exibindoNavbar(): boolean | Promise<boolean> {
+
+    return this.router.url !== '/login' && !this.auth.isAccessTokenInvalido();
   }
 
 }

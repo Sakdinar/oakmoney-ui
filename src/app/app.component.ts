@@ -11,9 +11,7 @@ import { AuthService } from './seguranca/auth.service';
 export class AppComponent {
 
   constructor(
-    private toastyConfig: ToastyConfig,
-    private router: Router,
-    private auth: AuthService
+    private toastyConfig: ToastyConfig
   ) {
     this.toastyConfig.theme = 'bootstrap';
   }
