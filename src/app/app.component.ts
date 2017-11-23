@@ -16,7 +16,5 @@ export class AppComponent {
     this.toastyConfig.theme = 'bootstrap';
   }
 
-  exibindoNavbar(): boolean | Promise<boolean> {
-    return this.router.url !== '/login' && !this.auth.isAccessTokenInvalido();
-  }
+
 }
