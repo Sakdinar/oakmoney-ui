@@ -1,4 +1,4 @@
-import { Lancamento } from './../../oak-core/models/Lancamento';
+import { Lancamento } from './../../oak-core/models/lancamento';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
